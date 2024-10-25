@@ -1,4 +1,4 @@
-function PropertyPage(): JSX.Element {
+function Property(): JSX.Element {
   return (
     <main className="page__main page__main--property">
       <section className="property">
@@ -325,4 +325,4 @@ function PropertyPage(): JSX.Element {
   );
 }
 
-export default PropertyPage;
+export default Property;
