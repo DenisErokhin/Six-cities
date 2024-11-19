@@ -15,3 +15,5 @@ root.render(
     <App rentCount = {RentProps.RENT_COUNT}/>
   </React.StrictMode>,
 );
+
+
