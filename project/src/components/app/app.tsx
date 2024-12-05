@@ -6,20 +6,21 @@ import PrivateRoute from '../private-route/private-route';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
+import { Offer } from '../../types/types';
 
 type AppRentProps = {
-  rentCount: number;
+  offers: Offer[];
 }
 
-function App({rentCount}: AppRentProps): JSX.Element {
+function App({offers}: AppRentProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Main rentCount = {rentCount}/>}/>
+        <Route path='/' element={<Main offers={offers}/>}/>
         <Route path={AppRoute.Login} element={<Login/>}/>
         <Route path={AppRoute.Favorites} element={
-          <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-            <Favorites/>
+          <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+            <Favorites offers={offers}/>
           </PrivateRoute>
         }
         />

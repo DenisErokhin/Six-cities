@@ -11,4 +11,5 @@ export enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
-// test commit
+export const START_COUNT = 5;
+export const MAX_PERCENT_STARS_WIDTH = 100;
