@@ -1,11 +1,13 @@
 import ListOffers from './../../components/list-offers/ListOffers';
-import { Offer } from '../../types/types';
+import { Offer, City } from '../../types/types';
+import Map from '../../components/map/map';
 
 type MainProps = {
   offers: Offer[];
+  city: City;
 }
 
-function Main({offers}: MainProps): JSX.Element {
+function Main({city, offers}: MainProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -97,7 +99,7 @@ function Main({offers}: MainProps): JSX.Element {
               {<ListOffers offers = {offers}/>}
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <Map locations={offers.map((offer) => offer.location)} city={city} />
             </div>
           </div>
         </div>

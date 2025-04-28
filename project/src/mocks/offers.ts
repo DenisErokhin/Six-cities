@@ -12,6 +12,11 @@ export const offers: Offer[] = [
     type: 'apartment',
     city: {
       name: 'Amsterdam'
+    },
+    location: {
+      latitude: 52.3909553943508,
+      longitude: 4.85309666406198,
+      zoom: 1,
     }
   },
   {
@@ -25,6 +30,11 @@ export const offers: Offer[] = [
     type: 'room',
     city: {
       name: 'Paris'
+    },
+    location: {
+      latitude: 52.3609553943508,
+      longitude: 4.85309666406198,
+      zoom: 1,
     }
   },
   {
@@ -38,6 +48,11 @@ export const offers: Offer[] = [
     type: 'house',
     city: {
       name: 'Paris'
+    },
+    location: {
+      latitude: 52.3909553943508,
+      longitude: 4.929309666406198,
+      zoom: 1,
     }
   },
   {
@@ -51,6 +66,11 @@ export const offers: Offer[] = [
     type: 'hotel',
     city: {
       name: 'Amsterdam'
+    },
+    location: {
+      latitude: 52.3809553943508,
+      longitude: 4.939309666406198,
+      zoom: 1,
     }
   },
 ];
