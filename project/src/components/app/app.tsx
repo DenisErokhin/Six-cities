@@ -6,14 +6,15 @@ import PrivateRoute from '../private-route/private-route';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
-import { Offer, City } from '../../types/types';
+import { Offer, City, Comment } from '../../types/types';
 
 type AppRentProps = {
   offers: Offer[];
   city: City;
+  reviews: Comment[];
 }
 
-function App({city, offers}: AppRentProps): JSX.Element {
+function App({city, offers, reviews}: AppRentProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
@@ -25,7 +26,7 @@ function App({city, offers}: AppRentProps): JSX.Element {
           </PrivateRoute>
         }
         />
-        <Route path={`${AppRoute.Property}/:id`} element={<Property/>}/>
+        <Route path={`${AppRoute.Property}/:id`} element={<Property reviews = {reviews} city= {city} nearbyOffers= {offers}/>}/>
         <Route path='*' element={<NotFoundPage/>}/>
       </Routes>
     </BrowserRouter>

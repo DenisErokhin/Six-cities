@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom';
-import { AppRoute, START_COUNT, MAX_PERCENT_STARS_WIDTH } from '../../const';
+import { AppRoute} from '../../const';
 import { Offer } from '../../types/types';
+import { getStarsWidth } from '../../utils';
 
-type OfferCartProps = {
+type CartProps = {
   offer: Offer;
   key: number;
   onMouseMove?: (id: number) => void;
   onMouseLeave?: () => void;
-  place?: 'cities' | 'favorites';
+  place?: 'cities' | 'favorites' | 'near-places';
 }
 
 const FavoritesCartImgSize = {
@@ -15,18 +16,18 @@ const FavoritesCartImgSize = {
   HEIGHT: '110',
 };
 
-const CitiesCartImgSize = {
+const DefaultCartImgSize = {
   WIDTH: '260',
   HEIGHT: '200',
 };
 
-function OfferCart({
+function Cart({
   offer,
   key,
   place = 'cities',
   onMouseMove = () => void 0,
   onMouseLeave = () => void 0,
-}: OfferCartProps): JSX.Element {
+}: CartProps): JSX.Element {
   const {id, price, rating, title, isPremium, isFavorite, previewImage, type} = offer;
   function handleMouseMove() {
     onMouseMove(id);
@@ -36,18 +37,17 @@ function OfferCart({
   let heightImg;
 
   switch (place) {
-    case 'cities':
-      widthImg = CitiesCartImgSize.WIDTH;
-      heightImg = CitiesCartImgSize.HEIGHT;
-      break;
     case 'favorites':
       widthImg = FavoritesCartImgSize.WIDTH;
       heightImg = FavoritesCartImgSize.HEIGHT;
       break;
+    default:
+      widthImg = DefaultCartImgSize.WIDTH;
+      heightImg = DefaultCartImgSize.HEIGHT;
   }
 
   return (
-    <article className={`${place}__place-card place-card`}
+    <article className={`${place === 'cities' ? 'cities__place-card' : `${place}__card`} place-card`}
       onMouseMove={handleMouseMove}
       onMouseLeave={onMouseLeave}
     >
@@ -77,7 +77,7 @@ function OfferCart({
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
             <span style={{
-              width: `${(MAX_PERCENT_STARS_WIDTH * rating) / START_COUNT}%`,
+              width: getStarsWidth(rating),
             }}
             >
             </span>
@@ -93,4 +93,4 @@ function OfferCart({
   );
 }
 
-export default OfferCart;
+export default Cart;

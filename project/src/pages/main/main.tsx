@@ -1,4 +1,4 @@
-import ListOffers from './../../components/list-offers/ListOffers';
+import CartList from '../../components/cart-list/cart-list';
 import { Offer, City } from '../../types/types';
 import Map from '../../components/map/map';
 
@@ -96,7 +96,7 @@ function Main({city, offers}: MainProps): JSX.Element {
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              {<ListOffers offers = {offers}/>}
+              {<CartList offers = {offers}/>}
             </section>
             <div className="cities__right-section">
               <Map locations={offers.map((offer) => offer.location)} city={city} />

@@ -1,12 +1,12 @@
 import { Offer } from '../../types/types';
-import OfferCart from '../cart/cart';
+import Cart from '../cart/cart';
 import { useState } from 'react';
 
 type ListOffersProps = {
   offers: Offer[];
 }
 
-function ListOffers ({offers}: ListOffersProps): JSX.Element {
+function CartList ({offers}: ListOffersProps): JSX.Element {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [activeOffer, setActiveOffer] = useState<number | null>(null);
 
@@ -21,7 +21,7 @@ function ListOffers ({offers}: ListOffersProps): JSX.Element {
   return (
     <div className="cities__places-list places__list tabs__content">
       {offers.map((offer) => (
-        <OfferCart
+        <Cart
           offer = {offer}
           key = {offer.id}
           onMouseMove = {handleCardMouseMove}
@@ -32,4 +32,4 @@ function ListOffers ({offers}: ListOffersProps): JSX.Element {
   );
 }
 
-export default ListOffers;
+export default CartList;
